@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="back" type="color">#6FB2E8</item>
+    <item name="white" type="color">#FFF</item>
+    <item name="black" type="color">#000</item>
+    <item name="draw" type="color">#5BDEA3</item>
+</resources>

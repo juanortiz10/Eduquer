@@ -19,6 +19,7 @@
     <string name="looking">looking</string>
     <string name="remove">remove</string>
     <string name="home">home</string>
+    <string name="whatlearn">¿What did you learn today?</string>
 
     <string-array name="tags">
         <item>Home</item>

@@ -1,7 +1,9 @@
 package com.example.juan.eduquer;
 
 
+import android.app.Activity;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -15,6 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.support.v4.app.FragmentActivity;
 
 import java.util.ArrayList;
 import adapter.DrawerAdapter;
@@ -24,14 +27,13 @@ import fragments.Look;
 import fragments.Remove;
 import models.Item;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends FragmentActivity {
 
     private ListView drawerList;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     private String actitle;
     private String[] tagTitles;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +47,8 @@ public class MainActivity extends ActionBarActivity {
         addDrawerItems();
         setupDrawer();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
     }
 
     private void addDrawerItems() {
@@ -61,13 +63,13 @@ public class MainActivity extends ActionBarActivity {
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-               ShowFragment(i);
+                ShowFragment(i);
             }
         });
     }
 
     private void ShowFragment(int position){
-        Fragment fragment= null;
+        android.support.v4.app.Fragment fragment= null;
 
         switch (position){
             case 0:
@@ -91,8 +93,9 @@ public class MainActivity extends ActionBarActivity {
         }
 
         if (fragment != null) {
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+            android.support.v4.app.FragmentTransaction t= getSupportFragmentManager().beginTransaction();
+            t.replace(R.id.content_frame,fragment);
+            t.commit();
 
             drawerList.setItemChecked(position, true);
             drawerList.setSelection(position);

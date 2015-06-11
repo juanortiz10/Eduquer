@@ -5,10 +5,22 @@
     android:background="@color/back">
 
     <TextView
-        android:layout_width="fill_parent"
+        android:id="@+id/txtWord"
         android:layout_height="wrap_content"
-        android:id="@+id/tvMuestra"
-        android:text="@string/add"
-        android:textSize="@dimen/size"
-        android:gravity="center_horizontal"/>
+        android:layout_width="fill_parent"
+        android:text="@string/whatlearn"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:layout_marginTop="25sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:inputType="text"/>
+    </RelativeLayout>
 </LinearLayout>

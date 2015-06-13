@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Eduquer</string>
-
-<<<<<<< HEAD
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
@@ -17,6 +15,11 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="workers">Programmers Working!!</string>
     <string name="item">Item</string>
+    <string name="add">ADD</string>
+    <string name="looking">looking</string>
+    <string name="remove">remove</string>
+    <string name="home">home</string>
+    <string name="whatlearn">¿What did you learn today?</string>
 
     <string-array name="tags">
         <item>Home</item>
@@ -24,8 +27,4 @@
         <item>Remove</item>
         <item>Look</item>
     </string-array>
-=======
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
->>>>>>> f617dcf04eebbfddf2f6e324ebf85fa792bd0918
 </resources>

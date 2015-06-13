@@ -4,6 +4,6 @@
     <style name="AppTheme" parent="android:Theme.Material.Light">
         <!-- Customize your theme here. -->
         <item name="android:colorPrimary">#5BDEA3</item>
-        <item name="android:colorPrimaryDark">#5BDEA3</item>
+        <item name="android:colorPrimaryDark">#4DAB81</item>
     </style>
 </resources>

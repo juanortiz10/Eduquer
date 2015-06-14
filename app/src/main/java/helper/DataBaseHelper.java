@@ -62,25 +62,11 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         return all;
     }
 
-    public int getWordCount(){
-        String query= "SELECT * FROM "+MyTable.TableInfo.table_name;
-        SQLiteDatabase db= this.getReadableDatabase();
-        Cursor cursor= db.rawQuery(query,null);
-        Log.e("Put information correctly","Success "+cursor.getCount());
-        cursor.close();
-        return cursor.getCount();
-    }
-
-    public Cursor getWord(DataBaseHelper dop,String nombre){
-        String[] args = new String[] {nombre.trim()};
-        SQLiteDatabase sq=dop.getReadableDatabase();
-        Cursor cr=sq.rawQuery("SELECT * FROM allwords WHERE name_word=?",args);
-        return cr;
-    }
-
-    public void deleteWord(DataBaseHelper dop){
+    public void deleteWord(DataBaseHelper dop, String word){
+        String[]args=new String[]{word};
         SQLiteDatabase sq= dop.getReadableDatabase();
-        sq.delete(MyTable.TableInfo.table_name, null, null);
+        sq.execSQL("DELETE FROM "+MyTable.TableInfo.table_name+" WHERE "+MyTable.TableInfo.name_word+"=?",args);
+        Log.e("Succesful","Row Deleted");
     }
 
 }

@@ -30,9 +30,10 @@ public class WordsAdapter extends ArrayAdapter {
         }
 
         TextView name= (TextView)convertView.findViewById(R.id.name);
-
+        ImageView image= (ImageView)convertView.findViewById(R.id.starIcon);
         Item item= (Item) getItem(position);
         name.setText(item.getName());
+        image.setImageResource(R.drawable.star);
 
         return convertView;
     }

@@ -9,9 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.juan.eduquer.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,29 +32,34 @@ public class Remove extends Fragment {
     public Remove(){}
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
-        View rootView = inflater.inflate(R.layout.remove,container,false);
+        final View rootView = inflater.inflate(R.layout.remove,container,false);
         listWords=(ListView)rootView.findViewById(R.id.listWords);
         DataBaseHelper dataBaseHelper= new DataBaseHelper(getActivity().getApplicationContext());
-        ArrayList myList;
+        final ArrayList myList;
         myList=dataBaseHelper.getALl();
-        listWords.setAdapter(new WordsAdapter(getActivity().getApplicationContext(),myList));
+        final WordsAdapter adapter=new WordsAdapter(getActivity().getApplicationContext(),myList);
+        listWords.setAdapter(adapter);
         listWords.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                showAlertDialog();
+                TextView textView= (TextView)view.findViewById(R.id.name);
+                String item= textView.getText().toString();
+                showAlertDialog(item);
+
                 return false;
             }
         });
         return rootView;
     }
 
-    private void showAlertDialog(){
+    private void showAlertDialog(final String wordTo){
         final AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
         builder.setMessage("Do you want to delete this word?");
         builder.setCancelable(true);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Toast.makeText(getActivity().getApplicationContext(), "Under Construction", Toast.LENGTH_SHORT).show();
+                DataBaseHelper dataBaseHelper= new DataBaseHelper(getActivity().getApplicationContext());
+                dataBaseHelper.deleteWord(dataBaseHelper,wordTo);
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener(){

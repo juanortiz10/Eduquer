@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,14 +29,14 @@ import models.Item;
  */
 public class Remove extends Fragment {
     private ListView listWords;
-
+    private ArrayList myList;
     public Remove(){}
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
         final View rootView = inflater.inflate(R.layout.remove,container,false);
         listWords=(ListView)rootView.findViewById(R.id.listWords);
         DataBaseHelper dataBaseHelper= new DataBaseHelper(getActivity().getApplicationContext());
-        final ArrayList myList;
+
         myList=dataBaseHelper.getALl();
         final WordsAdapter adapter=new WordsAdapter(getActivity().getApplicationContext(),myList);
         listWords.setAdapter(adapter);
@@ -44,15 +45,14 @@ public class Remove extends Fragment {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView textView= (TextView)view.findViewById(R.id.name);
                 String item= textView.getText().toString();
-                showAlertDialog(item);
-
+                showAlertDialog(item,adapter);
                 return false;
             }
         });
         return rootView;
     }
 
-    private void showAlertDialog(final String wordTo){
+    private void showAlertDialog(final String wordTo, final ArrayAdapter adapter){
         final AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
         builder.setMessage("Do you want to delete this word?");
         builder.setCancelable(true);
@@ -60,6 +60,11 @@ public class Remove extends Fragment {
             public void onClick(DialogInterface dialog, int id) {
                 DataBaseHelper dataBaseHelper= new DataBaseHelper(getActivity().getApplicationContext());
                 dataBaseHelper.deleteWord(dataBaseHelper,wordTo);
+                adapter.clear();
+                myList=dataBaseHelper.getALl();
+                adapter.notifyDataSetChanged();
+                adapter.addAll(myList);
+                Toast.makeText(getActivity().getApplicationContext(),wordTo+" Deleted",Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener(){

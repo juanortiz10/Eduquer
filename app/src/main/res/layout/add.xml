@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back">
+    android:background="@color/back"
+    android:layout_centerHorizontal="true">
 
     <TextView
         android:id="@+id/txtWord"
@@ -11,16 +12,26 @@
         android:text="@string/whatlearn"
         android:gravity="center_horizontal"
         android:textSize="25sp"
-        android:layout_marginTop="25sp"/>
+        android:layout_marginTop="45sp"/>
 
     <RelativeLayout
+        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <EditText
+            android:id="@+id/etWords"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:inputType="text"/>
+            android:textSize="20sp"
+            android:inputType="text"
+            android:background="@color/txtBack" />
+        <ImageButton
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ok"
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etWords"/>
     </RelativeLayout>
 </LinearLayout>

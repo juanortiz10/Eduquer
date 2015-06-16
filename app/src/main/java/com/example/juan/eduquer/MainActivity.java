@@ -1,12 +1,7 @@
 package com.example.juan.eduquer;
 
 
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.res.Configuration;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
@@ -26,6 +21,7 @@ import fragments.Home;
 import fragments.Look;
 import fragments.Remove;
 import models.Item;
+import models.Items;
 
 public class MainActivity extends FragmentActivity {
 

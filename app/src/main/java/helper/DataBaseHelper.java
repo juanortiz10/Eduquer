@@ -7,11 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import models.Item;
+import models.Items;
 
 /**
  * Created by juan on 9/06/15.

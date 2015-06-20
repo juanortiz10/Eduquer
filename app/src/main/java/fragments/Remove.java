@@ -15,14 +15,10 @@ import android.widget.Toast;
 
 import com.example.juan.eduquer.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import adapter.WordsAdapter;
 import helper.DataBaseHelper;
-import models.Item;
 
 /**
  * Created by juan on 10/06/15.

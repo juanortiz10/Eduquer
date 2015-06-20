@@ -13,6 +13,7 @@ import com.example.juan.eduquer.R;
 import java.util.List;
 
 import models.Item;
+import models.Items;
 
 /**
  * Created by juan on 10/06/15.

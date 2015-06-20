@@ -4,33 +4,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffff">
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout1"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent">
-        <EditText
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:id="@+id/tvSeach"
-            android:layout_width="wrap_content"
-            android:layout_toLeftOf="@+id/ibSearch"
-            android:layout_alignParentLeft="true"
-            android:hint="@string/searching">
-        </EditText>
-
-        <ImageButton
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_alignParentRight="true"
-            android:id="@+id/ibSearch"
-            android:src="@drawable/look">
-            </ImageButton>
-    </RelativeLayout>
-
     <ListView
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:id="@+id/lvResults">
+        android:id="@+id/lvResults"
+        android:background="@color/back">
         </ListView>
 </LinearLayout>

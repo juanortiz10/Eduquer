@@ -3,6 +3,8 @@ package fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.juan.eduquer.R;
@@ -43,11 +45,18 @@ public class Look extends Fragment implements OnItemClickListener{
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
         View rootView = inflater.inflate(R.layout.look,container,false);
+        setHasOptionsMenu(true);
         listViewResults = (ListView)  rootView.findViewById(R.id.lvResults);
         listViewResults.setOnItemClickListener(this);
         search();
         searchAdapter=new SearchAdapter(getActivity().getApplicationContext(),results);
         return rootView;
+    }
+
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        menu.clear();
+        super.onCreateOptionsMenu(menu,inflater);
+        inflater.inflate(R.menu.fragment_menu,menu);
     }
 
     protected Result updateResult(String keywords){

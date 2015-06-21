@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -12,28 +14,31 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.juan.eduquer.R;
-
 import java.util.ArrayList;
-
 import adapter.WordsAdapter;
 import helper.DataBaseHelper;
-
 /**
  * Created by juan on 10/06/15.
  */
+
 public class Remove extends Fragment {
     private ListView listWords;
+    private TextView noContent;
     private ArrayList myList;
     public Remove(){}
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
+        setHasOptionsMenu(true);
         final View rootView = inflater.inflate(R.layout.remove,container,false);
-        listWords=(ListView)rootView.findViewById(R.id.listWords);
-        DataBaseHelper dataBaseHelper= new DataBaseHelper(getActivity().getApplicationContext());
 
+        listWords=(ListView)rootView.findViewById(R.id.listWords);
+        noContent=(TextView)rootView.findViewById(R.id.noContent);
+        DataBaseHelper dataBaseHelper= new DataBaseHelper(getActivity().getApplicationContext());
         myList=dataBaseHelper.getALl();
+        if(myList.size()<1)
+            noContent.setText(R.string.empty);
+
         final WordsAdapter adapter=new WordsAdapter(getActivity().getApplicationContext(),myList);
         listWords.setAdapter(adapter);
         listWords.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -48,16 +53,28 @@ public class Remove extends Fragment {
         return rootView;
     }
 
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+        menu.clear();
+        super.onCreateOptionsMenu(menu,inflater);
+        inflater.inflate(R.menu.fragment_menu,menu);
+    }
+
     private void showAlertDialog(final String wordTo, final ArrayAdapter adapter){
         final AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
+
         builder.setMessage("Do you want to delete this word?");
         builder.setCancelable(true);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
             public void onClick(DialogInterface dialog, int id) {
                 DataBaseHelper dataBaseHelper= new DataBaseHelper(getActivity().getApplicationContext());
                 dataBaseHelper.deleteWord(dataBaseHelper,wordTo);
                 adapter.clear();
                 myList=dataBaseHelper.getALl();
+
+                if (myList.size()<1)
+                    noContent.setText(R.string.empty);
+
                 adapter.notifyDataSetChanged();
                 adapter.addAll(myList);
                 Toast.makeText(getActivity().getApplicationContext(),wordTo+" Deleted",Toast.LENGTH_SHORT).show();

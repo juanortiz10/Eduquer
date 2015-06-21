@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,6 +36,7 @@ public class Remove extends Fragment {
         listWords=(ListView)rootView.findViewById(R.id.listWords);
         noContent=(TextView)rootView.findViewById(R.id.noContent);
         DataBaseHelper dataBaseHelper= new DataBaseHelper(getActivity().getApplicationContext());
+
         myList=dataBaseHelper.getALl();
         if(myList.size()<1)
             noContent.setText(R.string.empty);

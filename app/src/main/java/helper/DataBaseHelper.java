@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ import models.Items;
 public class DataBaseHelper extends SQLiteOpenHelper{
     public static final int database_version=1;
     public String sqlQuery="CREATE TABLE IF NOT EXISTS " +MyTable.TableInfo.table_name+"( "+ MyTable.TableInfo.id_word+" INTEGER PRIMARY KEY, " +
-            MyTable.TableInfo.name_word+" TEXT," +MyTable.TableInfo.date+" DATE);";
+            MyTable.TableInfo.name_word+" TEXT," +MyTable.TableInfo.word_level+" INTEGER," +MyTable.TableInfo.date+" DATE);";
 
 
     public DataBaseHelper(Context context) {
@@ -40,6 +41,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         ContentValues cv=new ContentValues();
         cv.put(MyTable.TableInfo.name_word,name);
         cv.put(MyTable.TableInfo.date,fecha.toString());
+        cv.put(MyTable.TableInfo.word_level,0);
         long k=sq.insert(MyTable.TableInfo.table_name,null,cv);
         dop.close();
         Log.e("Put information correctly","Success");
@@ -68,4 +70,27 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         Log.e("Succesful","Row Deleted");
     }
 
+    public int getProgress(DataBaseHelper dop, String word){
+        SQLiteDatabase db= dop.getReadableDatabase();
+        int progress=0;
+        Cursor cursor= db.query(MyTable.TableInfo.table_name, new String[]{MyTable.TableInfo.word_level},
+                MyTable.TableInfo.name_word+ "=?", new String[]{word},null,null,null,null);
+        try {
+            if (cursor != null) {
+                cursor.moveToFirst();
+                progress=Integer.parseInt(cursor.getString(0));
+            }
+        }catch (Exception ex){}
+        return progress;
+    }
+
+    public int setProgress(DataBaseHelper dop, int newValue, String word){
+        SQLiteDatabase db= dop.getReadableDatabase();
+
+        ContentValues values= new ContentValues();
+        values.put(MyTable.TableInfo.word_level, newValue);
+
+        return db.update(MyTable.TableInfo.table_name,values, MyTable.TableInfo.name_word + "=?",
+                new String[]{word});
+    }
 }

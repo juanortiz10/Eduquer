@@ -11,11 +11,21 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#000"
         android:text="@string/item"
+        android:layout_marginTop="-8sp"
+        android:layout_marginBottom="4sp"
         android:layout_toRightOf="@+id/starIcon"
-        android:layout_marginLeft="5sp"
+        android:layout_marginLeft="8sp"
         android:layout_centerVertical="true" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/starIcon"/>
+    <ImageView
+        android:layout_marginTop="7sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imProgress"
+        android:layout_alignTop="@+id/name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

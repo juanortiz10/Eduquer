@@ -84,6 +84,7 @@ public class Look extends Fragment implements OnItemClickListener{
         this.words = dataBaseHelper.getALl();
         if (words.size() > 0) {
             result.getItems().clear();
+            //Verifica la fuerza de la palabra, la menor sera lanzada
             int random = (int) (Math.random() * (this.words.size()-1 + 1) + 0);
             final String textToSearch = this.words.get(random).getName();
             Thread t = new Thread() {

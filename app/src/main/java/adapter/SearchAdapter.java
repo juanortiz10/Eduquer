@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.juan.eduquer.R;
@@ -55,7 +56,9 @@ public class SearchAdapter extends BaseAdapter {
 			
 			TextView tvSnippet = (TextView)rowLayout.findViewById(R.id.tvSnippet);
 			tvSnippet.setText(item.getSnippet());
-			
+
+			ImageView imgLink=(ImageView)rowLayout.findViewById(R.id.image);
+			imgLink.setImageResource(Integer.parseInt(item.getFlag()));
 			convertView = rowLayout;
 		}
 		

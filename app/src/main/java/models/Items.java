@@ -8,6 +8,9 @@ public class Items {
 	String title;
 	String htmlTitle;
 	String link;
+
+
+	String flag;
 	String displayLink;
 	String snippet;
 	String htmlSnippet;
@@ -80,7 +83,6 @@ public class Items {
 	public void setMetatags(List<Metatag> metatags) {
 		this.metatags = metatags;
 	}
-	
-	
+
 	
 }

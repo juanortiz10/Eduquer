@@ -6,10 +6,14 @@ package models;
 public class Item {
     private String name;
     private int id;
-
+    private int progress;
     public Item(String name, int id){
         this.name=name;
         this.id=id;
+    }
+
+    public Item(int progress){
+        this.progress=progress;
     }
 
     public Item(){}
@@ -28,4 +32,5 @@ public class Item {
     public void setId(int id) {
         this.id = id;
     }
+
 }

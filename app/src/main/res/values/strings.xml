@@ -18,10 +18,15 @@
     <string name="add">ADD</string>
     <string name="looking">looking</string>
     <string name="remove">remove</string>
-    <string name="home">home</string>
+    <string name="home">Newest Way to Strengthen your Knowledge</string>
     <string name="whatlearn">¿What did you learn today?</string>
     <string name="mywords">My Words</string>
     <string name="searching">searching</string>
+    <string name="eduquer">Eduquer</string>
+    <string name="empty">Empty List, you can itype them in the Add tab</string>
+    <string name="demo">TextView</string>
+    <string name="nothing">nothing</string>
+    <string name="test">TextView</string>
 
     <string-array name="tags">
         <item>Home</item>

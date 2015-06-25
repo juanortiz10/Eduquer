@@ -30,7 +30,6 @@ public class ResultDeserializer{
 			item.setDisplayLink(jsonItem.getString("displayLink"));
 			item.setSnippet(jsonItem.getString("snippet"));
 			item.setHtmlSnippet(jsonItem.getString("htmlSnippet"));
-			item.setFlag(jsonItem.getString("flag"));
 			items.add(item);
 
 		}

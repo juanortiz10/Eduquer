@@ -8,6 +8,8 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.juan.eduquer.R;
+import com.example.juan.eduquer.Webview;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
@@ -84,9 +86,9 @@ public class Look extends Fragment implements OnItemClickListener{
         this.words = dataBaseHelper.getALl();
         if (words.size() > 0) {
             result.getItems().clear();
-            //Verifica la fuerza de la palabra, la menor sera lanzada
             int random = (int) (Math.random() * (this.words.size()-1 + 1) + 0);
             final String textToSearch = this.words.get(random).getName();
+            dataBaseHelper.setProgress(dataBaseHelper,dataBaseHelper.getProgress(dataBaseHelper,textToSearch)+1,textToSearch);
             Thread t = new Thread() {
                 public void run() {
                     result = updateResult(textToSearch);
@@ -103,8 +105,10 @@ public class Look extends Fragment implements OnItemClickListener{
 
     @Override
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(result.getItems().get(arg2).getLink()));
-        startActivity(intent);
+        Intent intent=new Intent();
+        intent.putExtra("link",(result.getItems().get(arg2).getLink()));
+        intent.setClass(getActivity(),Webview.class);
+        getActivity().startActivity(intent);
     }
 }
 

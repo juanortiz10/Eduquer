@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/back"
@@ -12,26 +12,31 @@
         android:text="@string/whatlearn"
         android:gravity="center_horizontal"
         android:textSize="25sp"
-        android:layout_marginTop="45sp"/>
+        android:layout_marginTop="45sp"
+        android:layout_above="@+id/etWords" />
 
     <RelativeLayout
         android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/etWords"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:inputType="text"
-            android:background="@color/txtBack" />
-        <ImageButton
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/ok"
-            android:id="@+id/btnSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/etWords"/>
-    </RelativeLayout>
-</LinearLayout>
+        android:layout_height="wrap_content"></RelativeLayout>
+
+    <ImageButton
+        style="?android:attr/borderlessButtonStyle"
+        android:src="@drawable/ok"
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/etWords"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:inputType="text"
+        android:background="@color/txtBack"
+        android:layout_above="@+id/btnSend"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

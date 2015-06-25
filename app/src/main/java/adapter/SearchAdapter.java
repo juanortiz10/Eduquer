@@ -53,12 +53,7 @@ public class SearchAdapter extends BaseAdapter {
 			
 			TextView tvLink = (TextView)rowLayout.findViewById(R.id.tvLink);
 			tvLink.setText(item.getLink());
-			
-			TextView tvSnippet = (TextView)rowLayout.findViewById(R.id.tvSnippet);
-			tvSnippet.setText(item.getSnippet());
 
-			ImageView imgLink=(ImageView)rowLayout.findViewById(R.id.image);
-			imgLink.setImageResource(Integer.parseInt(item.getFlag()));
 			convertView = rowLayout;
 		}
 		

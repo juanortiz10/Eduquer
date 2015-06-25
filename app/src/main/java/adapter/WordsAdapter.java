@@ -44,8 +44,8 @@ public class WordsAdapter extends ArrayAdapter {
 
         if(progress==0){image2.setImageResource(R.drawable.bar0);}
         else if(progress>0 && progress<3){ image2.setImageResource(R.drawable.bar1);}
-        else if(progress>3 && progress<7){ image2.setImageResource(R.drawable.bar2);}
-        else if(progress>7 && progress<11){ image2.setImageResource(R.drawable.bar3);}
+        else if(progress>=3 && progress<7){ image2.setImageResource(R.drawable.bar2);}
+        else if(progress>=7){ image2.setImageResource(R.drawable.bar3);}
         return convertView;
     }
 }

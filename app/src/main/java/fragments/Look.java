@@ -19,6 +19,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
 import adapter.SearchAdapter;
+import algorithms.CheckProgress;
 import helper.DataBaseHelper;
 import models.Item;
 import models.Items;
@@ -36,6 +37,9 @@ public class Look extends Fragment implements OnItemClickListener{
     private ArrayList<Items> results=new ArrayList();
     private ArrayList<Item> words;
     private SearchAdapter searchAdapter;
+    public String textToSearch;
+
+
     public Look(){}
 
     final Handler handlerTask = new Handler();
@@ -87,7 +91,7 @@ public class Look extends Fragment implements OnItemClickListener{
         if (words.size() > 0) {
             result.getItems().clear();
             int random = (int) (Math.random() * (this.words.size()-1 + 1) + 0);
-            final String textToSearch = this.words.get(random).getName();
+            textToSearch = this.words.get(random).getName();
             dataBaseHelper.setProgress(dataBaseHelper,dataBaseHelper.getProgress(dataBaseHelper,textToSearch)+1,textToSearch);
             Thread t = new Thread() {
                 public void run() {
@@ -108,7 +112,21 @@ public class Look extends Fragment implements OnItemClickListener{
         Intent intent=new Intent();
         intent.putExtra("link",(result.getItems().get(arg2).getLink()));
         intent.setClass(getActivity(),Webview.class);
-        getActivity().startActivity(intent);
+        getActivity().startActivityForResult(intent, 7);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(getActivity().getApplicationContext());
+        if (requestCode==7){
+            CheckProgress checkProgress=new CheckProgress();
+
+            int seconds=Integer.parseInt(data.getStringExtra("seconds"));
+            int add=checkProgress.checkSeconds(seconds);
+            int oldValue=dataBaseHelper.getProgress(dataBaseHelper,textToSearch);
+            dataBaseHelper.setProgress(dataBaseHelper,oldValue+add,textToSearch);
+        }
     }
 }
 

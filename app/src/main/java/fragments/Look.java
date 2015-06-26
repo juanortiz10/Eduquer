@@ -9,15 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.juan.eduquer.R;
 import com.example.juan.eduquer.Webview;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Handler;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import adapter.SearchAdapter;
 import algorithms.CheckProgress;
 import helper.DataBaseHelper;
@@ -30,7 +31,7 @@ import models.Search;
  * Created by juan on 10/06/15.
  */
 public class Look extends Fragment implements OnItemClickListener{
-
+    public int seconds=0;
     private final Search search = new Search();
     private ListView listViewResults;
     private Result result = new Result();
@@ -38,7 +39,7 @@ public class Look extends Fragment implements OnItemClickListener{
     private ArrayList<Item> words;
     private SearchAdapter searchAdapter;
     public String textToSearch;
-
+    Timer timer=new Timer();
 
     public Look(){}
 
@@ -57,6 +58,24 @@ public class Look extends Fragment implements OnItemClickListener{
         search();
         searchAdapter=new SearchAdapter(getActivity().getApplicationContext(),results);
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        timer.schedule(new Time(), 0, 2000);
+    }
+
+    @Override
+    public void onStop() {
+        update();
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        timer.cancel();
+        super.onDestroy();
     }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
@@ -92,7 +111,6 @@ public class Look extends Fragment implements OnItemClickListener{
             result.getItems().clear();
             int random = (int) (Math.random() * (this.words.size()-1 + 1) + 0);
             textToSearch = this.words.get(random).getName();
-            dataBaseHelper.setProgress(dataBaseHelper,dataBaseHelper.getProgress(dataBaseHelper,textToSearch)+1,textToSearch);
             Thread t = new Thread() {
                 public void run() {
                     result = updateResult(textToSearch);
@@ -109,24 +127,27 @@ public class Look extends Fragment implements OnItemClickListener{
 
     @Override
     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-        Intent intent=new Intent();
-        intent.putExtra("link",(result.getItems().get(arg2).getLink()));
-        intent.setClass(getActivity(),Webview.class);
-        getActivity().startActivityForResult(intent, 7);
+        Intent intent=new Intent(getActivity(),Webview.class);
+        intent.putExtra("link", (result.getItems().get(arg2).getLink()));
+        startActivityForResult(intent,1);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        DataBaseHelper dataBaseHelper = new DataBaseHelper(getActivity().getApplicationContext());
-        if (requestCode==7){
-            CheckProgress checkProgress=new CheckProgress();
-
-            int seconds=Integer.parseInt(data.getStringExtra("seconds"));
-            int add=checkProgress.checkSeconds(seconds);
-            int oldValue=dataBaseHelper.getProgress(dataBaseHelper,textToSearch);
-            dataBaseHelper.setProgress(dataBaseHelper,oldValue+add,textToSearch);
+    class Time extends TimerTask {
+        @Override
+        public void run() {
+            seconds++;
         }
     }
-}
+
+   private void update() {
+       DataBaseHelper dataBaseHelper=new DataBaseHelper(getActivity().getApplicationContext());
+       CheckProgress checkProgress = new CheckProgress();
+       int add=checkProgress.checkSeconds(seconds);
+       int oldValue=dataBaseHelper.getProgress(dataBaseHelper,textToSearch);
+       dataBaseHelper.setProgress(dataBaseHelper,oldValue+add,textToSearch);
+       dataBaseHelper.close();
+   }
+
+        }
+
 

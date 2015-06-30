@@ -40,7 +40,6 @@ public class Look extends Fragment implements OnItemClickListener{
     private SearchAdapter searchAdapter;
     public String textToSearch;
     Timer timer=new Timer();
-
     public Look(){}
 
     final Handler handlerTask = new Handler();
@@ -49,32 +48,40 @@ public class Look extends Fragment implements OnItemClickListener{
             updateItems();
         }
     };
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
         View rootView = inflater.inflate(R.layout.look,container,false);
         setHasOptionsMenu(true);
         listViewResults = (ListView)  rootView.findViewById(R.id.lvResults);
         listViewResults.setOnItemClickListener(this);
-        search();
+        DataBaseHelper dataBaseHelper=new DataBaseHelper(getActivity().getApplicationContext());
+        if(dataBaseHelper.getALl().size()>0) {
+            search();
+        }
         searchAdapter=new SearchAdapter(getActivity().getApplicationContext(),results);
         return rootView;
     }
 
     @Override
     public void onStart() {
+        DataBaseHelper dataBaseHelper=new DataBaseHelper(getActivity().getApplicationContext());
+        if(dataBaseHelper.getALl().size()>0)
+            timer.schedule(new Time(), 0, 2000);
         super.onStart();
-        timer.schedule(new Time(), 0, 2000);
     }
 
     @Override
     public void onStop() {
-        update();
+        DataBaseHelper dataBaseHelper=new DataBaseHelper(getActivity().getApplicationContext());
+        if(dataBaseHelper.getALl().size()>0)
+            update();
         super.onStop();
     }
 
     @Override
     public void onDestroy() {
-        timer.cancel();
+        DataBaseHelper dataBaseHelper=new DataBaseHelper(getActivity().getApplicationContext());
+        if(dataBaseHelper.getALl().size()>0)
+            timer.cancel();
         super.onDestroy();
     }
 

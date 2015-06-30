@@ -5,10 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Timer;
 
 import models.Item;
 import models.Items;
@@ -19,7 +22,7 @@ import models.Items;
 public class DataBaseHelper extends SQLiteOpenHelper{
     public static final int database_version=1;
     public String sqlQuery="CREATE TABLE IF NOT EXISTS " +MyTable.TableInfo.table_name+"( "+ MyTable.TableInfo.id_word+" INTEGER PRIMARY KEY, " +
-            MyTable.TableInfo.name_word+" TEXT," +MyTable.TableInfo.word_level+" INTEGER," +MyTable.TableInfo.date+" DATE);";
+            MyTable.TableInfo.name_word+" TEXT," +MyTable.TableInfo.word_level+" INTEGER," +MyTable.TableInfo.date+" LONG);";
 
 
     public DataBaseHelper(Context context) {
@@ -36,27 +39,28 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         onCreate(sqLiteDatabase);
     }
 
-    public void putInformation(DataBaseHelper dop,String name, java.util.Date fecha){
+    public void putInformation(DataBaseHelper dop,String name){
         SQLiteDatabase sq=dop.getWritableDatabase();
         ContentValues cv=new ContentValues();
         cv.put(MyTable.TableInfo.name_word,name);
-        cv.put(MyTable.TableInfo.date,fecha.toString());
+        cv.put(MyTable.TableInfo.date,System.currentTimeMillis());
         cv.put(MyTable.TableInfo.word_level,0);
         long k=sq.insert(MyTable.TableInfo.table_name,null,cv);
         dop.close();
-        Log.e("Put information correctly","Success");
+        Log.e("Put information correctly", "Success");
     }
 
     public ArrayList<Item> getALl(){
         ArrayList<Item> all= new ArrayList<>();
         String query= "SELECT * from "+MyTable.TableInfo.table_name;
         SQLiteDatabase db= this.getReadableDatabase();
-        Cursor cr= db.rawQuery(query,null);
+        Cursor cr= db.rawQuery(query, null);
 
         if(cr.moveToFirst()){
             do{
                 Item item=new Item();
                 item.setName(cr.getString(cr.getColumnIndex(MyTable.TableInfo.name_word)));
+                item.setDate(Long.parseLong(cr.getString(cr.getColumnIndex(MyTable.TableInfo.date))));
                 all.add(item);
             }while(cr.moveToNext());
         }
@@ -92,5 +96,29 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
         return db.update(MyTable.TableInfo.table_name,values, MyTable.TableInfo.name_word + "=?",
                 new String[]{word});
+    }
+
+    public int setNewDate(DataBaseHelper dop, long newValue, String word){
+        SQLiteDatabase db= dop.getReadableDatabase();
+
+        ContentValues values= new ContentValues();
+        values.put(MyTable.TableInfo.date, newValue);
+
+        return db.update(MyTable.TableInfo.table_name,values, MyTable.TableInfo.name_word + "=?",
+                new String[]{word});
+    }
+
+    public String getTime(DataBaseHelper dop, String word){
+        SQLiteDatabase db=dop.getReadableDatabase();
+        Cursor cursor= db.query(MyTable.TableInfo.table_name, new String[]{MyTable.TableInfo.date},
+                MyTable.TableInfo.name_word + "=?", new String[]{word}, null, null, null, null);
+        String date=null;
+        try {
+            if (cursor != null) {
+                cursor.moveToFirst();
+                date=cursor.getString(0);
+            }
+        }catch (Exception ex){}
+        return date;
     }
 }

@@ -1,20 +1,20 @@
 package models;
 
+import java.util.Date;
+
 /**
  * Created by juan on 10/06/15.
  */
 public class Item {
     private String name;
     private int id;
-    private int progress;
+    private long date;
+
     public Item(String name, int id){
         this.name=name;
         this.id=id;
     }
 
-    public Item(int progress){
-        this.progress=progress;
-    }
 
     public Item(){}
     public String getName() {
@@ -33,4 +33,11 @@ public class Item {
         this.id = id;
     }
 
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
+    }
 }

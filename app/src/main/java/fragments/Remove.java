@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ import helper.DataBaseHelper;
 public class Remove extends Fragment {
     private ListView listWords;
     private TextView noContent;
+    private ImageView imvNoContent;
     private ArrayList myList;
     public Remove(){}
 
@@ -38,9 +40,11 @@ public class Remove extends Fragment {
         DataBaseHelper dataBaseHelper= new DataBaseHelper(getActivity().getApplicationContext());
 
         myList=dataBaseHelper.getALl();
-        if(myList.size()<1)
+        if(myList.size()<1) {
+            imvNoContent = (ImageView) rootView.findViewById(R.id.imvNocontent);
+            imvNoContent.setImageResource(R.drawable.trash);
             noContent.setText(R.string.empty);
-
+        }
         final WordsAdapter adapter=new WordsAdapter(getActivity().getApplicationContext(),myList);
         listWords.setAdapter(adapter);
         listWords.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

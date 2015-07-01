@@ -28,6 +28,8 @@
     <string name="nothing">nothing</string>
     <string name="test">TextView</string>
     <string name="ok">Ok</string>
+    <string name="image">image</string>
+    <string name="language">Language</string>
 
     <string-array name="tags">
         <item>Home</item>

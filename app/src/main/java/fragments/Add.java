@@ -44,9 +44,8 @@ public class Add extends Fragment implements View.OnClickListener{
         if (view.getId() == R.id.btnSend) {
             try {
                 if(etWords.length()>0) {
-                    Date time = new Date();
                     DataBaseHelper dataBaseHelper = new DataBaseHelper(getActivity().getApplicationContext());
-                    dataBaseHelper.putInformation(dataBaseHelper, etWords.getText().toString(), time);
+                    dataBaseHelper.putInformation(dataBaseHelper, etWords.getText().toString());
                     Toast.makeText(getActivity().getApplicationContext(), "New word has been added correctly!", Toast.LENGTH_SHORT).show();
                     etWords.setText("");
                 }else{

@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.juan.eduquer.R;
@@ -43,14 +42,13 @@ public class SearchAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		RelativeLayout rowLayout;
 
-		if(convertView == null)
-		{					
-			rowLayout = (RelativeLayout)LayoutInflater.from(context).inflate(R.layout.tutorialinfo, parent, false);
+		if(convertView == null) {
+			rowLayout = (RelativeLayout)LayoutInflater.from(context).inflate(R.layout.itemsadapter, parent, false);
 			Items item = (Items)getItem(position);
 			
 			TextView tvTitle = (TextView)rowLayout.findViewById(R.id.tvTitle);
 			tvTitle.setText(item.getTitle());
-			
+
 			TextView tvLink = (TextView)rowLayout.findViewById(R.id.tvLink);
 			tvLink.setText(item.getLink());
 

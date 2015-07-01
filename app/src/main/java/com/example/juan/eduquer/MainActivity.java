@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentActivity;
 
 import java.util.ArrayList;
 import adapter.DrawerAdapter;
+import algorithms.Low;
 import fragments.Add;
 import fragments.Home;
 import fragments.Look;
@@ -24,7 +25,7 @@ import models.Item;
 import models.Items;
 
 public class MainActivity extends FragmentActivity {
-
+    Low low;
     private ListView drawerList;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
@@ -42,6 +43,8 @@ public class MainActivity extends FragmentActivity {
         tagTitles= getResources().getStringArray(R.array.tags);
         addDrawerItems();
         setupDrawer();
+
+        low=new Low(getApplicationContext());
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);

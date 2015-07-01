@@ -61,6 +61,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
                 Item item=new Item();
                 item.setName(cr.getString(cr.getColumnIndex(MyTable.TableInfo.name_word)));
                 item.setDate(Long.parseLong(cr.getString(cr.getColumnIndex(MyTable.TableInfo.date))));
+                item.setProgress(Integer.parseInt(cr.getString(cr.getColumnIndex(MyTable.TableInfo.word_level))));
                 all.add(item);
             }while(cr.moveToNext());
         }
@@ -70,7 +71,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public void deleteWord(DataBaseHelper dop, String word){
         String[]args=new String[]{word};
         SQLiteDatabase sq= dop.getReadableDatabase();
-        sq.execSQL("DELETE FROM "+MyTable.TableInfo.table_name+" WHERE "+MyTable.TableInfo.name_word+"=?",args);
+        sq.execSQL("DELETE FROM " + MyTable.TableInfo.table_name + " WHERE " + MyTable.TableInfo.name_word + "=?", args);
         Log.e("Succesful","Row Deleted");
     }
 

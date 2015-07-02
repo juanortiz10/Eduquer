@@ -9,6 +9,7 @@ public class Item {
     private String name;
     private int id;
     private long date;
+    private int progress;
 
     public Item(String name, int id){
         this.name=name;
@@ -39,5 +40,13 @@ public class Item {
 
     public void setDate(long date) {
         this.date = date;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
     }
 }

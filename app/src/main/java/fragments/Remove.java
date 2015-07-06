@@ -59,6 +59,11 @@ public class Remove extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         menu.clear();
         super.onCreateOptionsMenu(menu,inflater);

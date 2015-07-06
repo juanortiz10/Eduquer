@@ -40,6 +40,11 @@ public class Add extends Fragment implements View.OnClickListener{
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btnSend) {
             try {
@@ -54,4 +59,5 @@ public class Add extends Fragment implements View.OnClickListener{
             } catch (Exception ex) {}
         }
     }
+
 }

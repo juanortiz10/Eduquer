@@ -27,4 +27,9 @@ public class Home extends Fragment{
         super.onCreateOptionsMenu(menu,inflater);
         inflater.inflate(R.menu.fragment_menu,menu);
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 }

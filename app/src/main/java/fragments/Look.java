@@ -71,6 +71,11 @@ public class Look extends Fragment implements OnItemClickListener{
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     public void onStart() {
         DataBaseHelper dataBaseHelper=new DataBaseHelper(getActivity().getApplicationContext());
         if(dataBaseHelper.getALl().size()>0)

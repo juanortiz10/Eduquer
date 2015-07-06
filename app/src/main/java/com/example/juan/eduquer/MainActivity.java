@@ -50,6 +50,16 @@ public class MainActivity extends FragmentActivity {
         getActionBar().setHomeButtonEnabled(true);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
     private void addDrawerItems() {
         ArrayList<Item> items = new ArrayList<>();
         items.add(new Item(tagTitles[0], R.drawable.home));

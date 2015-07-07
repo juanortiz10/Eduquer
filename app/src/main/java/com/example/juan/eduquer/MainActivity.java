@@ -3,7 +3,6 @@ package com.example.juan.eduquer;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
-
 import java.util.ArrayList;
 import adapter.DrawerAdapter;
 import algorithms.Low;
@@ -23,7 +21,6 @@ import fragments.Home;
 import fragments.Look;
 import fragments.Remove;
 import models.Item;
-import models.Items;
 
 public class MainActivity extends FragmentActivity {
     Low low;

@@ -5,16 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.text.format.Time;
 import android.util.Log;
-import android.widget.Toast;
-
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Timer;
-
 import models.Item;
-import models.Items;
 
 /**
  * Created by juan on 9/06/15.

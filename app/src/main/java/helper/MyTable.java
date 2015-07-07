@@ -1,6 +1,5 @@
 package helper;
 
-
 import android.provider.BaseColumns;
 
 public class MyTable {

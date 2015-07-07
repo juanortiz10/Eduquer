@@ -1,6 +1,5 @@
 package fragments;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,7 +20,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import adapter.SearchAdapter;
 import algorithms.CheckProgress;
 import helper.DataBaseHelper;

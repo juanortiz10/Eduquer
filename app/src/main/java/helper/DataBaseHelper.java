@@ -47,7 +47,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         cv.put(MyTable.TableInfo.word_level,0);
         long k=sq.insert(MyTable.TableInfo.table_name,null,cv);
         dop.close();
-        Log.e("Put information correctly", "Success");
     }
 
     public ArrayList<Item> getALl(){

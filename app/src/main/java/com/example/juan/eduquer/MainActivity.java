@@ -3,6 +3,7 @@ package com.example.juan.eduquer;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
 import android.view.Menu;
@@ -43,21 +44,13 @@ public class MainActivity extends FragmentActivity {
         tagTitles= getResources().getStringArray(R.array.tags);
         addDrawerItems();
         setupDrawer();
-
+        if (savedInstanceState == null) {
+            ShowFragment(0);
+        }
         low=new Low(getApplicationContext());
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
     }
 
     private void addDrawerItems() {
@@ -68,7 +61,7 @@ public class MainActivity extends FragmentActivity {
         items.add(new Item(tagTitles[3], R.drawable.look));
 
         drawerList.setAdapter(new DrawerAdapter(this, items));
-        ShowFragment(0);
+
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

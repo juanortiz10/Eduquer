@@ -2,6 +2,7 @@ package fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -31,6 +32,11 @@ public class Remove extends Fragment {
     private ArrayList myList;
     public Remove(){}
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
         setHasOptionsMenu(true);
         final View rootView = inflater.inflate(R.layout.remove,container,false);
@@ -59,10 +65,6 @@ public class Remove extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         menu.clear();

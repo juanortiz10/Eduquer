@@ -1,5 +1,6 @@
 package fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -68,11 +69,6 @@ public class Look extends Fragment implements OnItemClickListener{
         }
         searchAdapter=new SearchAdapter(getActivity().getApplicationContext(),results);
         return rootView;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
     }
 
     @Override

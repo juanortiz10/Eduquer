@@ -1,5 +1,6 @@
 package fragments;
 
+import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.example.juan.eduquer.MainActivity;
 import com.example.juan.eduquer.R;
 import java.util.Date;
 import helper.DataBaseHelper;
@@ -21,6 +24,7 @@ public class Add extends Fragment implements View.OnClickListener{
     private ImageButton btnSend;
     private EditText etWords;
     private SQLiteDatabase db;
+    MainActivity mainActivity=new MainActivity();
 
     public Add(){}
 
@@ -30,18 +34,14 @@ public class Add extends Fragment implements View.OnClickListener{
         btnSend=(ImageButton)rootView.findViewById(R.id.btnSend);
         btnSend.setOnClickListener(this);
         etWords=(EditText)rootView.findViewById(R.id.etWords);
+        setRetainInstance(true);
         return rootView;
     }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         menu.clear();
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_menu,menu);
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
     }
 
     @Override

@@ -9,7 +9,6 @@ import android.webkit.WebView;
  */
 public class Webview extends Activity{
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

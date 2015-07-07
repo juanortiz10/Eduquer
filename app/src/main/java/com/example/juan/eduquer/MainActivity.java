@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
-
 import java.util.ArrayList;
 import adapter.DrawerAdapter;
 import algorithms.Low;
@@ -22,7 +21,6 @@ import fragments.Home;
 import fragments.Look;
 import fragments.Remove;
 import models.Item;
-import models.Items;
 
 public class MainActivity extends FragmentActivity {
     Low low;
@@ -43,21 +41,13 @@ public class MainActivity extends FragmentActivity {
         tagTitles= getResources().getStringArray(R.array.tags);
         addDrawerItems();
         setupDrawer();
-
+        if (savedInstanceState == null) {
+            ShowFragment(0);
+        }
         low=new Low(getApplicationContext());
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
     }
 
     private void addDrawerItems() {
@@ -68,7 +58,7 @@ public class MainActivity extends FragmentActivity {
         items.add(new Item(tagTitles[3], R.drawable.look));
 
         drawerList.setAdapter(new DrawerAdapter(this, items));
-        ShowFragment(0);
+
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

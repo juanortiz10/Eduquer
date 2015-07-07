@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,6 +29,11 @@ public class Remove extends Fragment {
     private ImageView imvNoContent;
     private ArrayList myList;
     public Remove(){}
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
         setHasOptionsMenu(true);
@@ -59,10 +63,6 @@ public class Remove extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         menu.clear();

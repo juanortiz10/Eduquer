@@ -2,8 +2,6 @@ package algorithms;
 
 import android.content.Context;
 import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
-
 import helper.DataBaseHelper;
 import models.Item;
 
@@ -12,7 +10,6 @@ import models.Item;
  */
 public class Low {
     int hours=0;
-
 
     public Low(Context context){
         init(context);
@@ -44,12 +41,17 @@ public class Low {
     }
 
     private int checkProgress(int hours){
-        int value=0;
-        if(hours>0 && hours <48) value=2;
-        if(hours>=48 && hours <96) value=4;
-        if(hours>=96 && hours <144) value=8;
-        if(hours>=144 && hours <192) value=10;
-        if(hours>=192 && hours <240) value=12;
+        int value=0,h1=0,h2=48;
+        for(int i=0; i<5; i++){
+            if(hours>0 && hours>h1 && hours<h2){
+                value=i*2;
+                break;
+            }else{
+                h1+=48;
+                h2+=48;
+            }
+        }
+        System.out.println(value);
             return value;
     }
 }

@@ -10,7 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.juan.eduquer.R;
-
 import models.Items;
 
 public class SearchAdapter extends BaseAdapter {

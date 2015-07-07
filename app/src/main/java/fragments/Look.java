@@ -20,7 +20,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import adapter.SearchAdapter;
 import algorithms.CheckProgress;
 import helper.DataBaseHelper;
@@ -68,11 +67,6 @@ public class Look extends Fragment implements OnItemClickListener{
         }
         searchAdapter=new SearchAdapter(getActivity().getApplicationContext(),results);
         return rootView;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
     }
 
     @Override

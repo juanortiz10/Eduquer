@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Eduquer</string>
+    <string name="title_section1">Sección 1</string>
+    <string name="title_section2">Sección 2</string>
+    <string name="title_section3">Sectión 3</string>
+
+    <string name="navigation_drawer_open">Abrir barra de navegacion</string>
+    <string name="navigation_drawer_close">Cerrar barra de navegacion</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Configuración</string>
+
+    <string name="drawer_open">Abrir barra de navegacion</string>
+    <string name="drawer_close">Cerrar barra de navegacion</string>
+    <string name="workers">Programadores trabajando..!</string>
+    <string name="item">Elemento</string>
+    <string name="add">AGREGAR</string>
+    <string name="looking">Buscando</string>
+    <string name="remove">remover</string>
+    <string name="home">La inovadora manera de fortalecer tu aprendizaje</string>
+    <string name="whatlearn">Que aprendiste hoy?</string>
+    <string name="mywords">Mi lista</string>
+    <string name="searching">buscando</string>
+    <string name="eduquer">Eduquer</string>
+    <string name="empty">Lista vacia, puedes agregarlas en la pestaña agregar</string>
+    <string name="demo">TextView</string>
+    <string name="nothing">nada</string>
+    <string name="test">TextView</string>
+    <string name="ok">Ok</string>
+    <string name="image">imagen</string>
+    <string name="language">Idioma</string>
+    <string name="noavai">No Disponible</string>
+    <string name="please">Porfavor teclea una palabra, frase o título</string>
+    <string name="wordadded">Palabra agregada correctamente</string>
+    <string name="already">Ya existe</string>
+    <string name="wait">Espera un momento...</string>
+    <string name="emptylist">Tu lista de palabras esta vacía</string>
+    <string name="problems">Hemos tenido algunos problemas, reinicia la aplicación</string>
+    <string name="searching.">Buscando...</string>
+    <string name="doyouwant">Estas seguro que quieres eliminar esta palabra?</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="deleted">Deleted!</string>
+    <string-array name="tags">
+        <item>Home</item>
+        <item>Agregar</item>
+        <item>Almacén</item>
+        <item>Investiga</item>
+    </string-array>
+</resources>

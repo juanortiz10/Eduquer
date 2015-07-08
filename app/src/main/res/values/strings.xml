@@ -30,7 +30,18 @@
     <string name="ok">Ok</string>
     <string name="image">image</string>
     <string name="language">Language</string>
-
+    <string name="noavai">No Available</string>
+    <string name="please">Please type word, phrase or title</string>
+    <string name="wordadded">Word added correctly</string>
+    <string name="already">already exists</string>
+    <string name="wait">Wait a moment..</string>
+    <string name="emptylist">Word's list is empty</string>
+    <string name="problems">We've had some problems please reload the app</string>
+    <string name="searching.">Searching...</string>
+    <string name="doyouwant">Do you want to delete this word?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="deleted">Deleted!</string>
     <string-array name="tags">
         <item>Home</item>
         <item>Add</item>

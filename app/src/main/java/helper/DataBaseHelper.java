@@ -64,7 +64,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         String[]args=new String[]{word};
         SQLiteDatabase sq= dop.getReadableDatabase();
         sq.execSQL("DELETE FROM " + MyTable.TableInfo.table_name + " WHERE " + MyTable.TableInfo.name_word + "=?", args);
-        Log.e("Succesful","Row Deleted");
     }
 
     public int getProgress(DataBaseHelper dop, String word){

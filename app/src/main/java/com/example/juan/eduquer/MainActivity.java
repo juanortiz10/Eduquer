@@ -85,7 +85,8 @@ public class MainActivity extends FragmentActivity {
                 break;
 
             default:
-                Toast.makeText(getApplicationContext(), "No disponible",Toast.LENGTH_SHORT).show();
+                //
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.noavai),Toast.LENGTH_SHORT).show();
                 fragment = new Home();
                 position =1;
                 break;
@@ -100,8 +101,6 @@ public class MainActivity extends FragmentActivity {
             drawerList.setSelection(position);
             setTitle(tagTitles[position]);
             drawerLayout.closeDrawer(drawerList);
-        }else{
-            Log.e("Error  ", "MostrarFragment" + position);
         }
     }
 

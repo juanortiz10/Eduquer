@@ -53,7 +53,7 @@ public class Add extends Fragment implements View.OnClickListener{
                     word=etWords.getText().toString();
                     new CheckDataBase().execute();
                 }else{
-                    Toast.makeText(getActivity().getApplicationContext(),"Please type word, phrase or title",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),getResources().getString(R.string.please),Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception ex) {}
         }
@@ -66,8 +66,8 @@ public class Add extends Fragment implements View.OnClickListener{
         protected void onPostExecute(Boolean s) {
             super.onPostExecute(s);
             progressDialog.dismiss();
-            if(!s) Toast.makeText(getActivity().getApplicationContext(),"Word added correctly",Toast.LENGTH_SHORT).show();
-            else Toast.makeText(getActivity().getApplicationContext(),"Error word "+word+" already exists",Toast.LENGTH_SHORT).show();
+            if(!s) Toast.makeText(getActivity().getApplicationContext(),getResources().getString(R.string.wordadded),Toast.LENGTH_SHORT).show();
+            else Toast.makeText(getActivity().getApplicationContext(),"Error "+word+getResources().getString(R.string.already),Toast.LENGTH_SHORT).show();
             etWords.setText("");
         }
 
@@ -89,7 +89,7 @@ public class Add extends Fragment implements View.OnClickListener{
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog=new ProgressDialog(getActivity());
-            progressDialog.setMessage("Espera un momento...");
+            progressDialog.setMessage(getResources().getString(R.string.wait));
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.show();
         }

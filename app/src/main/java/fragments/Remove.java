@@ -73,9 +73,9 @@ public class Remove extends Fragment {
     private void showAlertDialog(final String wordTo, final ArrayAdapter adapter){
         final AlertDialog.Builder builder= new AlertDialog.Builder(getActivity());
 
-        builder.setMessage("Do you want to delete this word?");
+        builder.setMessage(getResources().getString(R.string.doyouwant));
         builder.setCancelable(true);
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int id) {
                 DataBaseHelper dataBaseHelper= new DataBaseHelper(getActivity().getApplicationContext());
@@ -88,10 +88,10 @@ public class Remove extends Fragment {
 
                 adapter.notifyDataSetChanged();
                 adapter.addAll(myList);
-                Toast.makeText(getActivity().getApplicationContext(),wordTo+" Deleted",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(),wordTo+getResources().getString(R.string.deleted),Toast.LENGTH_SHORT).show();
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener(){
+        builder.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int id){
                 dialog.cancel();
             }

@@ -63,7 +63,7 @@ public class Look extends Fragment implements OnItemClickListener{
             imvNo=(ImageView)rootView.findViewById(R.id.imvNo);
             imvNo.setImageResource(R.drawable.empty);
             tvNo=(TextView)rootView.findViewById(R.id.tvNo);
-            tvNo.setText("Word's list empty");
+            tvNo.setText(getResources().getString(R.string.emptylist));
         }
         searchAdapter=new SearchAdapter(getActivity().getApplicationContext(),results);
         return rootView;
@@ -115,7 +115,7 @@ public class Look extends Fragment implements OnItemClickListener{
 
     protected void updateItems() {
         if(0 == result.getItems().size()){
-            Toast.makeText(getActivity().getApplicationContext(), "We've had some problems please reload the app", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(),getResources().getString(R.string.problems), Toast.LENGTH_SHORT).show();
         }
         listViewResults.setAdapter(searchAdapter);
         searchAdapter.notifyDataSetChanged();
@@ -136,10 +136,10 @@ public class Look extends Fragment implements OnItemClickListener{
                 }
             };
 
-            Toast.makeText(getActivity().getApplicationContext(), "Searching... " + textToSearch, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.searching_) + textToSearch, Toast.LENGTH_SHORT).show();
             t.start();
         }else{
-            Toast.makeText(getActivity().getApplicationContext(), "Your word's list is empty",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.emptylist),Toast.LENGTH_SHORT).show();
         }
         dataBaseHelper.close();
     }

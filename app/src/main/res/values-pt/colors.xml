@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="back" type="color">#D5E6D9</item>
+    <item name="white" type="color">#FFF</item>
+    <item name="black" type="color">#000</item>
+    <item name="draw" type="color">#5BDEA3</item>
+    <item name="txtBack" type="color">#EBF7F2</item>
+    <item name="colorList" type="color">#EAF2EC</item>
+</resources>

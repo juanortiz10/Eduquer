@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme"  parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/MyTheme</item>
+    </style>
+
+    <style name="MyTheme">
+        <item name="android:background">#5BDEA3</item>
+    </style>
+    <style name="RatingBar">
+        <item name="android:progressDrawable">@drawable/book</item>
+        <item name="android:minHeight">16dip</item>
+        <item name="android:maxHeight">16dip</item>
+    </style>
+</resources>

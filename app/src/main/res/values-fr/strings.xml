@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Eduquer</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Ouvrir la navigation</string>
+    <string name="navigation_drawer_close">Fermer la navigation</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Paramètres</string>
+
+    <string name="drawer_open">Ouvrir la navigation</string>
+    <string name="drawer_close">Fermer la navigationn</string>
+    <string name="workers">Programmeurs travaillant..!</string>
+    <string name="item">Article</string>
+    <string name="add">Ajouter</string>
+    <string name="looking">Recherche</string>
+    <string name="remove">Supprimer</string>
+    <string name="home">La façon novatrice de renforcer votre apprentissage</string>
+    <string name="whatlearn">Vous avez appris aujourd'hui?</string>
+    <string name="mywords">Ma liste</string>
+    <string name="searching">recherche</string>
+    <string name="eduquer">Eduquer</string>
+    <string name="empty">Vider la liste, vous pouvez ajouter l'onglet add</string>
+    <string name="demo">TextView</string>
+    <string name="nothing">rien</string>
+    <string name="test">TextView</string>
+    <string name="ok">Ok</string>
+    <string name="image">image</string>
+    <string name="language">Langue</string>
+    <string name="noavai">Indisponible</string>
+    <string name="please">S'il vous plaît taper un mot, une phrase ou un titre</string>
+    <string name="wordadded">Mot ajouté correctement</string>
+    <string name="already">Il existe déjà</string>
+    <string name="wait">Attendez une minute...</string>
+    <string name="emptylist">Votre liste de mots est vide</string>
+    <string name="problems">Nous avons eu quelques problèmes, redémarrez l'application</string>
+    <string name="searching.">Recherche...</string>
+    <string name="doyouwant">Êtes-vous sûr de vouloir supprimer ce mot?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="deleted">Enlevé!</string>
+    <string-array name="tags">
+        <item>Home</item>
+        <item>Ajouter</item>
+        <item>Entrepôt</item>
+        <item>Regarder</item>
+    </string-array>
+</resources>

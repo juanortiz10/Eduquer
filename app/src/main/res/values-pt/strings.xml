@@ -1,27 +1,27 @@
 <resources>
     <string name="app_name">Eduquer</string>
-    <string name="title_section1">Sección 1</string>
-    <string name="title_section2">Sección 2</string>
-    <string name="title_section3">Sectión 3</string>
+    <string name="title_section1">Seção 1</string>
+    <string name="title_section2">Seção 2</string>
+    <string name="title_section3">Seção 3</string>
 
-    <string name="navigation_drawer_open">Abrir barra de navegacion</string>
-    <string name="navigation_drawer_close">Cerrar barra de navegacion</string>
+    <string name="navigation_drawer_open">Barra de navegação</string>
+    <string name="navigation_drawer_close">Barra de navegação</string>
 
     <string name="action_example">Example action</string>
 
-    <string name="action_settings">Configuración</string>
+    <string name="action_settings">Configuração</string>
 
-    <string name="drawer_open">Abrir barra de navegacion</string>
-    <string name="drawer_close">Cerrar barra de navegacion</string>
+    <string name="drawer_open">Barra de navegação</string>
+    <string name="drawer_close">Barra de navegação</string>
     <string name="workers">Programadores trabajando..!</string>
     <string name="item">Elemento</string>
-    <string name="add">AGREGAR</string>
-    <string name="looking">Buscando</string>
+    <string name="add">ADICIONAR</string>
+    <string name="looking">Procurando</string>
     <string name="remove">remover</string>
-    <string name="home">La innovadora manera de fortalecer tu aprendizaje</string>
-    <string name="whatlearn">Que aprendiste hoy?</string>
-    <string name="mywords">Mi lista</string>
-    <string name="searching">buscando</string>
+    <string name="home">LA mais nova forma de reforçar o seu conhecimento</string>
+    <string name="whatlearn">O que você aprendeu hoje?</string>
+    <string name="mywords">Minhas palabras</string>
+    <string name="searching">procurando</string>
     <string name="eduquer">Eduquer</string>
     <string name="empty">Lista vacia, puedes agregarlas en la pestaña agregar</string>
     <string name="demo">TextView</string>

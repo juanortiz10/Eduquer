@@ -99,7 +99,7 @@ public class Look extends Fragment implements OnItemClickListener{
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         menu.clear();
         super.onCreateOptionsMenu(menu,inflater);
-        inflater.inflate(R.menu.fragment_menu,menu);
+        inflater.inflate(R.menu.menu_main,menu);
     }
 
     protected Result updateResult(String keywords){

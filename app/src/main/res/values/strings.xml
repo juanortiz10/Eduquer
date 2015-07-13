@@ -35,8 +35,8 @@
     <string name="wordadded">Word added correctly</string>
     <string name="already">already exists</string>
     <string name="wait">Wait a moment..</string>
-    <string name="emptylist">Word's list is empty</string>
-    <string name="problems">We've had some problems please reload the app</string>
+    <string name="emptylist">Word\'s list is empty</string>
+    <string name="problems">We\'ve had some problems please reload the app</string>
     <string name="searching.">Searching...</string>
     <string name="doyouwant">Do you want to delete this word?</string>
     <string name="yes">Yes</string>

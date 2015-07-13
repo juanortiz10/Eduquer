@@ -3,14 +3,19 @@ package com.example.juan.eduquer;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 import java.util.ArrayList;
@@ -22,32 +27,36 @@ import fragments.Look;
 import fragments.Remove;
 import models.Item;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends ActionBarActivity {
     Low low;
     private ListView drawerList;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
-    private String actitle;
     private String[] tagTitles;
+    private RelativeLayout layout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        drawerList = (ListView)findViewById(R.id.nav);
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        actitle = getTitle().toString();
+        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        layout=(RelativeLayout)findViewById(R.id.layout);
+        drawerList = (ListView)findViewById(R.id.nav);
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
         tagTitles= getResources().getStringArray(R.array.tags);
+
         addDrawerItems();
         setupDrawer();
+
         if (savedInstanceState == null) {
-            ShowFragment(0);
-        }
+            ShowFragment(0);        }
         low=new Low(getApplicationContext());
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     private void addDrawerItems() {
@@ -100,7 +109,7 @@ public class MainActivity extends FragmentActivity {
             drawerList.setItemChecked(position, true);
             drawerList.setSelection(position);
             setTitle(tagTitles[position]);
-            drawerLayout.closeDrawer(drawerList);
+            drawerLayout.closeDrawer(layout);
         }
     }
 

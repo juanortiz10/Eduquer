@@ -1,23 +1,18 @@
 package com.example.juan.eduquer;
 
-
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.support.v4.app.FragmentActivity;
 import java.util.ArrayList;
 import adapter.DrawerAdapter;
 import algorithms.Low;
@@ -63,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
         ArrayList<Item> items = new ArrayList<>();
         items.add(new Item(tagTitles[0], R.drawable.home));
         items.add(new Item(tagTitles[1], R.drawable.add));
-        items.add(new Item(tagTitles[2], R.drawable.remove));
+        items.add(new Item(tagTitles[2], R.drawable.stack));
         items.add(new Item(tagTitles[3], R.drawable.look));
 
         drawerList.setAdapter(new DrawerAdapter(this, items));

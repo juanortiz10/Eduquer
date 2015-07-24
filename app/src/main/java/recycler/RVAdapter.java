@@ -29,7 +29,7 @@ public class RVAdapter  extends RecyclerView.Adapter<RVAdapter.ItemsViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(ItemsViewHolder itemsViewHolder, int i) {
+    public void onBindViewHolder(final ItemsViewHolder itemsViewHolder, int i) {
         itemsViewHolder.tvTitle.setText(items.get(i).getTitle());
         itemsViewHolder.tvLink.setText(items.get(i).getLink());
     }
@@ -47,7 +47,7 @@ public class RVAdapter  extends RecyclerView.Adapter<RVAdapter.ItemsViewHolder>{
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public static class ItemsViewHolder extends RecyclerView.ViewHolder {
+    public static class ItemsViewHolder extends RecyclerView.ViewHolder{
         CardView cv;
         ImageView imLink;
         TextView tvLink,tvTitle;

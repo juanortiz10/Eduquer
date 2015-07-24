@@ -1,5 +1,6 @@
 package fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,12 +11,12 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.juan.eduquer.R;
+import com.example.juan.eduquer.Webview;
 import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import algorithms.CheckProgress;
@@ -25,24 +26,23 @@ import models.Items;
 import models.Result;
 import models.Search;
 import recycler.RVAdapter;
+import recycler.RecyclerItemClickListener;
 
 /**
  * Created by juan on 10/06/15.
  */
-public class Look extends Fragment implements{
+
+public class Look extends Fragment{
     public int seconds=0;
     private final Search search = new Search();
- //   private ListView listViewResults;
     private Result result = new Result();
     private ArrayList<Items> results=new ArrayList();
     private ArrayList<Item> words;
-//    private SearchAdapter searchAdapter;
     public String textToSearch;
     private ImageView imvNo;
     private TextView tvNo;
     Timer timer=new Timer();
     RecyclerView rv;
-    List<Items> items=new ArrayList<>();
 
     public Look(){}
 
@@ -67,11 +67,30 @@ public class Look extends Fragment implements{
         if(dataBaseHelper.getALl().size()>0) {
             search();
         }else{
-            imvNo=(ImageView)rootView.findViewById(R.id.imvNo);
-            imvNo.setImageResource(R.drawable.empty);
-            tvNo=(TextView)rootView.findViewById(R.id.tvNo);
-            tvNo.setText(getResources().getString(R.string.emptylist));
+            try {
+                imvNo = (ImageView) rootView.findViewById(R.id.imvNo);
+                imvNo.setImageResource(R.drawable.empty);
+                tvNo = (TextView) rootView.findViewById(R.id.tvNo);
+                tvNo.setText(getResources().getString(R.string.emptylist));
+            }catch (Exception ex){
+                Toast.makeText(getActivity().getApplicationContext(),R.string.emptylist,Toast.LENGTH_SHORT).show();
+            }
         }
+        rv.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), rv, new RecyclerItemClickListener.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(View view, int position) {
+                Items link=results.get(position);
+                Intent intent=new Intent(getActivity(),Webview.class);
+                intent.putExtra("link", (link.getLink()));
+                startActivityForResult(intent, 1);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        }));
         return rootView;
     }
 
@@ -105,7 +124,7 @@ public class Look extends Fragment implements{
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         menu.clear();
         super.onCreateOptionsMenu(menu,inflater);
-        inflater.inflate(R.menu.menu_main,menu);
+        inflater.inflate(R.menu.menu_main, menu);
     }
 
     protected Result updateResult(String keywords){
@@ -150,13 +169,7 @@ public class Look extends Fragment implements{
         }
         dataBaseHelper.close();
     }
-/*
-    @Override
-    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-        Intent intent=new Intent(getActivity(),Webview.class);
-        intent.putExtra("link", (result.getItems().get(arg2).getLink()));
-        startActivityForResult(intent,1);
-    }*/
+
     class Time extends TimerTask {
         @Override
         public void run() {

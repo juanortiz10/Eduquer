@@ -8,4 +8,5 @@
     <item name="colorList" type="color">#EAF2EC</item>
     <color name="primaryColor">#5BDEA3</color>
     <color name="primaryColorDark">#4DAB81</color>
+    <color name="colorCard" type="color">#E6F0EA</color>
 </resources>

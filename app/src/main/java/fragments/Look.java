@@ -1,7 +1,10 @@
 package fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,63 +12,85 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.juan.eduquer.R;
 import com.example.juan.eduquer.Webview;
-import android.content.Intent;
 import android.os.Handler;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-import adapter.SearchAdapter;
 import algorithms.CheckProgress;
 import helper.DataBaseHelper;
 import models.Item;
 import models.Items;
 import models.Result;
 import models.Search;
+import recycler.RVAdapter;
+import recycler.RecyclerItemClickListener;
 
 /**
  * Created by juan on 10/06/15.
  */
-public class Look extends Fragment implements OnItemClickListener{
+
+public class Look extends Fragment{
     public int seconds=0;
     private final Search search = new Search();
-    private ListView listViewResults;
     private Result result = new Result();
     private ArrayList<Items> results=new ArrayList();
     private ArrayList<Item> words;
-    private SearchAdapter searchAdapter;
     public String textToSearch;
     private ImageView imvNo;
     private TextView tvNo;
     Timer timer=new Timer();
+    RecyclerView rv;
+
     public Look(){}
 
     final Handler handlerTask = new Handler();
+
     final Runnable updateItemsTask = new Runnable(){
         public void run(){
             updateItems();
         }
     };
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedIntanceState){
-        View rootView = inflater.inflate(R.layout.look,container,false);
+        View rootView = inflater.inflate(R.layout.recycler,container,false);
         setHasOptionsMenu(true);
-        listViewResults = (ListView)  rootView.findViewById(R.id.lvResults);
-        listViewResults.setOnItemClickListener(this);
+
+        rv=(RecyclerView)rootView.findViewById(R.id.rv);
+        rv.setHasFixedSize(true);
+        LinearLayoutManager llm=new LinearLayoutManager(getActivity().getApplicationContext());
+        rv.setLayoutManager(llm);
+
         DataBaseHelper dataBaseHelper=new DataBaseHelper(getActivity().getApplicationContext());
         if(dataBaseHelper.getALl().size()>0) {
             search();
         }else{
-            imvNo=(ImageView)rootView.findViewById(R.id.imvNo);
-            imvNo.setImageResource(R.drawable.empty);
-            tvNo=(TextView)rootView.findViewById(R.id.tvNo);
-            tvNo.setText(getResources().getString(R.string.emptylist));
+            try {
+                imvNo = (ImageView) rootView.findViewById(R.id.imvNo);
+                imvNo.setImageResource(R.drawable.empty);
+                tvNo = (TextView) rootView.findViewById(R.id.tvNo);
+                tvNo.setText(getResources().getString(R.string.emptylist));
+            }catch (Exception ex){
+                Toast.makeText(getActivity().getApplicationContext(),R.string.emptylist,Toast.LENGTH_SHORT).show();
+            }
         }
-        searchAdapter=new SearchAdapter(getActivity().getApplicationContext(),results);
+        rv.addOnItemTouchListener(new RecyclerItemClickListener(getActivity(), rv, new RecyclerItemClickListener.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(View view, int position) {
+                Items link=results.get(position);
+                Intent intent=new Intent(getActivity(),Webview.class);
+                intent.putExtra("link", (link.getLink()));
+                startActivityForResult(intent, 1);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+
+            }
+        }));
         return rootView;
     }
 
@@ -99,7 +124,7 @@ public class Look extends Fragment implements OnItemClickListener{
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         menu.clear();
         super.onCreateOptionsMenu(menu,inflater);
-        inflater.inflate(R.menu.menu_main,menu);
+        inflater.inflate(R.menu.menu_main, menu);
     }
 
     protected Result updateResult(String keywords){
@@ -109,6 +134,7 @@ public class Look extends Fragment implements OnItemClickListener{
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         results.addAll(newResult.getItems());
         return newResult;
     }
@@ -117,8 +143,8 @@ public class Look extends Fragment implements OnItemClickListener{
         if(0 == result.getItems().size()){
             Toast.makeText(getActivity().getApplicationContext(),getResources().getString(R.string.problems), Toast.LENGTH_SHORT).show();
         }
-        listViewResults.setAdapter(searchAdapter);
-        searchAdapter.notifyDataSetChanged();
+        RVAdapter adapter=new RVAdapter(results);
+        rv.setAdapter(adapter);
     }
 
     private void search(){
@@ -142,13 +168,6 @@ public class Look extends Fragment implements OnItemClickListener{
             Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.emptylist),Toast.LENGTH_SHORT).show();
         }
         dataBaseHelper.close();
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-        Intent intent=new Intent(getActivity(),Webview.class);
-        intent.putExtra("link", (result.getItems().get(arg2).getLink()));
-        startActivityForResult(intent,1);
     }
 
     class Time extends TimerTask {

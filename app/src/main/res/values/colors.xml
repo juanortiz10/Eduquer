@@ -6,4 +6,8 @@
     <item name="draw" type="color">#5BDEA3</item>
     <item name="txtBack" type="color">#EBF7F2</item>
     <item name="colorList" type="color">#EAF2EC</item>
+    <color name="colorCard" type="color">#F2FCF8</color>
+    <color name="colorCardOdd" type="color">#F4FF82</color>
+    <color name="colorCardPair" type="color">#FF82B6</color>
+    <color name="colorCardThr" type="color">#8D82FF</color>
 </resources>

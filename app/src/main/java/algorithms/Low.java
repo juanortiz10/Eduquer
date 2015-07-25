@@ -1,6 +1,8 @@
 package algorithms;
 
 import android.content.Context;
+import android.widget.Toast;
+
 import java.util.Calendar;
 import helper.DataBaseHelper;
 import models.Item;
@@ -9,7 +11,6 @@ import models.Item;
  * Created by jjortiz on 30/06/15.
  */
 public class Low {
-    int hours=0;
 
     public Low(Context context){
         init(context);
@@ -37,21 +38,22 @@ public class Low {
 
           int hoursMax=c.get(Calendar.HOUR);
           int hoursMin=c.get(Calendar.HOUR);
+            System.out.println(hoursMax);
+            System.out.println(hoursMin);
         return checkProgress(hoursMax-hoursMin);
     }
 
     private int checkProgress(int hours){
-        int value=0,h1=0,h2=48;
+        int value=0,h1=0,h2=12;
         for(int i=0; i<5; i++){
-            if(hours>0 && hours>h1 && hours<h2){
+            if(hours>0 && hours>h1 && hours<=h2){
                 value=i*2;
                 break;
             }else{
-                h1+=48;
-                h2+=48;
+                h1+=12;
+                h2+=12;
             }
         }
-        System.out.println(value);
             return value;
     }
 }

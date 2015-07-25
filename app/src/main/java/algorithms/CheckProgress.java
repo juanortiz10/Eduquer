@@ -23,6 +23,7 @@ public class CheckProgress {
         for(int i=0; i<15; i++){
             if(seconds>0 && seconds>=sec1 && seconds <sec2) {
                 value = sec2;
+                System.out.println(value);
                 break;
             }else {
                 sec1 += 60;
